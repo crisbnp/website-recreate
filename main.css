@@ -12,6 +12,7 @@ body {
     color: #032e49;
     display: grid;
     grid-template-rows: auto auto 12rem 1fr auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-columns: 1fr;
     overflow-x: hidden; /*no horizontal scroll bar*/
 }
 
@@ -251,27 +252,28 @@ a, .coral-text {
 
 #title {
     position: absolute;
+    margin: 0 auto;
     color: #fff;
 }
 
 #title h1 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-shadow: 1px 1px 15px #000;
+    margin: 0 auto;
 }
 
-@media screen and (min-width: 768px ) {
+@media screen and (min-width: 768px) {
     #title h1 {
         font-size: 3rem;
         margin: 0 auto;
-        width: 70%;
         padding: 2rem;
     }
 
 }
 
-@media screen and (min-width: 474px) and (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 525px) {
     #title h1 {
-        font-size: 3rem;
+        font-size: 2rem;
         margin: 0 auto;
         width: 70%;
         padding: 2rem;
@@ -597,10 +599,141 @@ a, .coral-text {
     padding: 20px;
 }
 
-input[type=range] {
-    width: 100%;
+.slider-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    text-align: center;
 }
 
+input[type=range] {
+    -webkit-appearance: none; /*Hides slider so that custom slider can be made*/
+    width: 100%; /*Specific width required for Firefox*/
+    background: transparent; /*Transparent in all but white in Chrome*/
+    /* margin: 4.05px 0; */
+}
+
+input[type=range]:focus {
+    outline: none; /*Focus styling for accessibility*/
+}
+
+/* Special styling for Webkit/Blink - Styling the thumb (widget we can click or drag along)*/
+/* Note although code repeated for firefox and ie, don't use comma-separate the selectors because browser will drop entire selector */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #2d83ff;
+    height: 20px;
+    width: 20px;
+    border-radius: 15px;
+    background: #2d83ff;
+    cursor: pointer;
+    margin-top: 14px; /*Need to specify margin in Chrome, automatic in Firefox and IE*/
+    box-shadow: none; /*For shadow effects i.e 1px 1px 10px #000*/
+    margin-top: -5.05px;
+}
+
+/* track */
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    box-shadow: none;
+    background: #e3e9ee;
+    border-radius: 10px;
+    border: 1px solid #e3e9ee;
+}
+
+
+input[type=range]:focus::-webkit-slider-runnable-track{
+    background: #e3e9ee;
+}
+
+/* Firefox thumb*/
+
+input[type=range]::-moz-range-thumb {
+    border: 1px solid #2d83ff;
+    height: 20px;
+    width: 20px;
+    border-radius: 15px;
+    background: #2d83ff;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+/* firefox track */
+input[type=range]::-moz-range-track{
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    box-shadow: none;
+    background: #e3e9ee;
+    border-radius: 10px;
+    border: 1px solid #e3e9ee;
+}
+
+input[type=range]::-moz-range-progress {
+    width: 100%;
+    height:20px;
+    background: #2d83ff;
+}
+
+/* IE */
+/* input[type=range]::-ms-thumb {
+    border: 1px solid #2d83ff;
+    height: 20px;
+    width: 20px;
+    border-radius: 15px;
+    background: #2d83ff;
+    cursor: pointer;
+    box-shadow: none
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #d9e2e8;
+    border: 0px solid #010101;
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #e3e9ee;
+    border: 0px solid #010101;
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  }
+
+  input[type=range]:focus::-ms-fill-lower {
+    background: #e3e9ee;;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #edf0f4;
+  } */
+
+  
+
+/* styling track */
+
+
+
+
+
+@media screen and (min-width: 768px) {
+
+    .slider-info {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: 1fr;
+        grid-gap: 1rem;
+    }
+
+}
 
 /* CONNECT */
 
